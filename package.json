@@ -1,0 +1,43 @@
+{
+  "name": "layzee_customer_app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "android": "react-native run-android",
+    "preandroid:assets": "mkdir -p ./android/app/build/intermediates/assets/debug && mkdir -p ./android/app/build/intermediates/res/merged/debug",
+    "android:assets": "react-native bundle --dev false --platform android --entry-file ./index.js --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug",
+    "preandroid:build": "rm -rf ./android/app/build/outputs/apk/debug",
+    "android:build": "cd android && ./gradlew assembleDebug",
+    "android:clean": "cd android && ./gradlew clean",
+    "android:debug:key": "keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android | openssl sha1 -binary | openssl base64"
+  },
+  "dependencies": {
+    "react": "16.6.3",
+    "react-native": "0.58.4",
+    "react-native-banner-carousel": "^1.0.3",
+    "react-native-confirmation-code-input": "^1.0.4",
+    "react-native-gesture-handler": "^1.0.15",
+    "react-native-image-picker": "^0.28.0",
+    "react-native-image-resizer": "^1.0.0",
+    "react-native-maps": "^0.23.0",
+    "react-native-phone-input": "^0.2.1",
+    "react-navigation": "^3.2.1",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "24.1.0",
+    "jest": "24.1.0",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-test-renderer": "16.6.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
